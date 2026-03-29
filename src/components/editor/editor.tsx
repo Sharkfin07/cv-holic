@@ -1,4 +1,5 @@
-import EditIcon from '../assets/icons/edit-icon.svg?react';
+import EditIcon from '../../assets/icons/edit-icon.svg?react';
+import GlobalButton from '../ui/GlobalButton';
 
 const fonts = [
     { name: "Sans Serif", class: "font-sans-serif" },
@@ -20,14 +21,24 @@ function Editor({ selectedFont, onFontChange }: EditorProps) {
                 </h1>
                 <EditIcon className="" width={32} height={32} />
             </div>
-            {fonts.map((font, index) => {
-                return (
-                    <button key={index} className={`h-7 w-full bg-red-500 ${selectedFont === font.class && "disabled"}`} onClick={() => onFontChange(font.class)}>
-                        {font.name}
-                    </button>
-                );
-            })}
+            <EditorSection>
+                <div className='flex gap-2'>
+                    {fonts.map((font, index) => {
+                        return (
+                            <GlobalButton onClick={() => onFontChange(font.class)} key={index} className={selectedFont === font.class ? "disabled" : ""}>{font.name}</GlobalButton>
+                        );
+                    })}
+                </div>
+            </EditorSection>
         </>
+    );
+}
+
+function EditorSection({ children, ...props }: React.ButtonHTMLAttributes<HTMLAreaElement>) {
+    return (
+        <section className='p-5 bg-gray-700 rounded-2xl' {...props}>
+            {children}
+        </section>
     );
 }
 

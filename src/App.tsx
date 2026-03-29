@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Paper from "./components/paper/paper";
-import Editor from "./components/editor/editor";
+import Paper from "./components/paper/Paper";
+import Editor from "./components/editor/Editor";
 
 function App() {
   const [paperFont, setPaperFont] = useState("font-sans-serif");
