@@ -4,6 +4,7 @@ import Editor from "./components/editor/Editor";
 import Logo from "./assets/icons/cv-holic-logo.svg?react";
 
 function App() {
+  // * States
   const [font, setFont] = useState("font-sans-serif");
   const [name, setName] = useState("John Doe");
   const [email, setEmail] = useState("example@gmail.com");
@@ -23,7 +24,17 @@ function App() {
       endYearOfStudy: "2025",
     },
   ]);
+  const [experiences, setExperiences] = useState([
+    {
+      id: crypto.randomUUID(),
+      companyName: "",
+      position: "",
+      startYearOfExperience: "2024",
+      endYearOfExperience: "2025",
+    },
+  ]);
 
+  // * State Handlers
   const handleFontChange = (font: string) => {
     setFont(font);
   };
@@ -79,6 +90,41 @@ function App() {
     const newEducations = educations.filter((education) => education.id !== id);
     setEducations(newEducations);
   };
+  const handleExperiencesChange = (
+    id: string,
+    field: string,
+    target: string,
+  ) => {
+    const newExperiences = experiences.map((experiences) => {
+      if (experiences.id === id) {
+        return {
+          ...experiences,
+          [field]: target,
+        };
+      }
+      return experiences;
+    });
+
+    setExperiences(newExperiences);
+  };
+  const handleAddExperience = () => {
+    setExperiences([
+      ...experiences,
+      {
+        id: crypto.randomUUID(),
+        companyName: "",
+        position: "",
+        startYearOfExperience: "2024",
+        endYearOfExperience: "2025",
+      },
+    ]);
+  };
+  const handleRemoveExperience = (id: string) => {
+    const newExperiences = experiences.filter(
+      (experience) => experience.id !== id,
+    );
+    setExperiences(newExperiences);
+  };
 
   return (
     <>
@@ -109,6 +155,10 @@ function App() {
               onEducationsChange={handleEducationsChange}
               onAddEducation={handleAddEducation}
               onRemoveEducation={handleRemoveEducation}
+              experiences={experiences}
+              onExperiencesChange={handleExperiencesChange}
+              onAddExperience={handleAddExperience}
+              onRemoveExperience={handleRemoveExperience}
             />
           </section>
 

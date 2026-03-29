@@ -2,6 +2,7 @@ import EditIcon from "../../assets/icons/edit-icon.svg?react";
 import GlobalButton from "../ui/GlobalButton";
 import GlobalTextInput from "../ui/GlobalTextInput";
 import EducationInput, { type Education } from "./EducationInput";
+import ExperienceInput, { type Experience } from "./ExperienceInput";
 
 const fonts = [
   { name: "Sans Serif", class: "font-sans-serif" },
@@ -30,6 +31,14 @@ type EditorProps = {
   ) => void;
   onAddEducation: () => void;
   onRemoveEducation: (id: string) => void;
+  experiences: Experience[];
+  onExperiencesChange: (
+    id: string,
+    field: keyof Experience,
+    target: string,
+  ) => void;
+  onAddExperience: () => void;
+  onRemoveExperience: (id: string) => void;
 };
 
 function Editor({
@@ -49,6 +58,10 @@ function Editor({
   onEducationsChange,
   onAddEducation,
   onRemoveEducation,
+  experiences,
+  onExperiencesChange,
+  onAddExperience,
+  onRemoveExperience,
 }: EditorProps) {
   return (
     <>
@@ -114,19 +127,37 @@ function Editor({
         </EditorSection>
 
         {/* Education Editor */}
-        <EditorSection title="Education" className="flex flex-col gap-6">
-          {educations.map((education) => {
-            return (
-              <EducationInput
-                education={education}
-                onChange={onEducationsChange}
-                onRemove={onRemoveEducation}
-              />
-            );
-          })}
-          <GlobalButton variant="outline" onClick={onAddEducation}>
-            <p>+ Add Education</p>
-          </GlobalButton>
+        <EditorSection title="Education">
+          <div className="flex flex-col gap-6">
+            {educations.map((education) => {
+              return (
+                <EducationInput
+                  education={education}
+                  onChange={onEducationsChange}
+                  onRemove={onRemoveEducation}
+                />
+              );
+            })}
+            <GlobalButton onClick={onAddEducation}>
+              <p>+ Add Education</p>
+            </GlobalButton>
+          </div>
+        </EditorSection>
+        <EditorSection title="Experiences">
+          <div className="flex flex-col gap-6">
+            {experiences.map((experience) => {
+              return (
+                <ExperienceInput
+                  experience={experience}
+                  onChange={onExperiencesChange}
+                  onRemove={onRemoveExperience}
+                />
+              );
+            })}
+            <GlobalButton onClick={onAddExperience}>
+              <p>+ Add Experience</p>
+            </GlobalButton>
+          </div>
         </EditorSection>
       </div>
     </>

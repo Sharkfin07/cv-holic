@@ -34,7 +34,7 @@ export default function EducationInput({
         />
         <GlobalTextInput
           label="Title of Study"
-          placeholder="Example: Bachelor of Science"
+          placeholder="Example: Bachelor of Computer Science"
           value={education.title}
           onChange={(e) => onChange(education.id, "title", e.target.value)}
         />

@@ -51,7 +51,7 @@ function Paper({
       {/* Education */}
       <section className="mt-5">
         <p className="text-2xl font-bold mb-2">Education</p>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 text-sm">
           {educations.map((education) => {
             return <EducationEntry education={education} />;
           })}
