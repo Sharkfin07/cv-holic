@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Paper from "./components/paper/Paper";
 import Editor from "./components/editor/Editor";
+import Logo from "./assets/icons/cv-holic-logo.svg?react";
 
 function App() {
   const [font, setFont] = useState("font-sans-serif");
@@ -40,7 +41,12 @@ function App() {
   return (
     <>
       <main className="w-screen h-screen bg-oxford-blue flex flex-col overflow-hidden">
-        <nav className="h-17.5 bg-gray-700"></nav>
+        <nav className="h-17.5 bg-gray-700 flex items-center justify-start px-6">
+          <Logo
+            height={48}
+            className="hover:opacity-60 transition duration-200 ease-in-out"
+          />
+        </nav>
         <div className="grid grid-cols-5 w-full flex-1 min-h-0">
           {/* Editor */}
           <section className="col-span-3 h-full overflow-y-auto px-5 py-5 custom-scrollbar text-white">
