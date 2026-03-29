@@ -172,6 +172,7 @@ function App() {
               location={location}
               description={description}
               educations={educations}
+              experiences={experiences}
             />
           </section>
         </div>

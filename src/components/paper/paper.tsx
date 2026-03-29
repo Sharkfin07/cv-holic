@@ -2,6 +2,7 @@ import EmailIcon from "../../assets/icons/email-icon.svg?react";
 import PhoneIcon from "../../assets/icons/phone-icon.svg?react";
 import LocationIcon from "../../assets/icons/location-icon.svg?react";
 import { type Education } from "../editor/EducationInput";
+import { type Experience } from "../editor/ExperienceInput";
 
 type PaperProps = {
   font?: string;
@@ -11,6 +12,7 @@ type PaperProps = {
   location: string;
   description: string;
   educations: Education[];
+  experiences: Experience[];
 };
 
 function Paper({
@@ -21,6 +23,7 @@ function Paper({
   location,
   description,
   educations,
+  experiences,
 }: PaperProps) {
   return (
     <div
@@ -49,11 +52,23 @@ function Paper({
       <hr />
 
       {/* Education */}
-      <section className="mt-5">
+      <section className="my-5">
         <p className="text-2xl font-bold mb-2">Education</p>
         <div className="flex flex-col gap-1 text-sm">
           {educations.map((education) => {
             return <EducationEntry education={education} />;
+          })}
+        </div>
+      </section>
+
+      <hr />
+
+      {/* Experience */}
+      <section className="mt-5">
+        <p className="text-2xl font-bold mb-2">Experience</p>
+        <div className="flex flex-col gap-1 text-sm">
+          {experiences.map((experience) => {
+            return <ExperienceEntry experience={experience} />;
           })}
         </div>
       </section>
@@ -79,6 +94,29 @@ function EducationEntry({ education }: EducationEntryProps) {
       <div className="flex-3 flex flex-col">
         <p className="font-bold">{education.title}</p>
         <p>{education.schoolName}</p>
+      </div>
+    </div>
+  );
+}
+
+type ExperienceEntryProps = {
+  experience: Experience;
+};
+
+function ExperienceEntry({ experience }: ExperienceEntryProps) {
+  const start = experience.startYearOfExperience.trim();
+  const end = experience.endYearOfExperience.trim();
+
+  const experienceDate = [start, end].filter(Boolean).join(" - ");
+
+  return (
+    <div className="flex">
+      <div className="flex-1">
+        <p className="font-bold">{experienceDate}</p>
+      </div>
+      <div className="flex-3 flex flex-col">
+        <p className="font-bold">{experience.position}</p>
+        <p>{experience.companyName}</p>
       </div>
     </div>
   );
