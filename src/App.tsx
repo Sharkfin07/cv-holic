@@ -128,16 +128,17 @@ function App() {
 
   return (
     <>
-      <main className="w-screen h-screen bg-oxford-blue flex flex-col overflow-hidden">
-        <nav className="h-17.5 bg-cv-green flex items-center justify-start px-6">
+      <main className="w-screen min-h-screen md:h-screen bg-oxford-blue flex flex-col md:overflow-hidden">
+        <nav className="h-17.5 bg-cv-green flex items-center justify-start px-6 shrink-0">
           <Logo
             height={48}
             className="hover:opacity-60 transition duration-200 ease-in-out"
           />
         </nav>
-        <div className="grid grid-cols-5 w-full flex-1 min-h-0">
+        {/* Gunakan flex-col di mobile, grid di md ke atas */}
+        <div className="flex flex-col md:grid md:grid-cols-5 w-full flex-1 md:min-h-0">
           {/* Editor */}
-          <section className="col-span-3 h-full overflow-y-auto px-5 py-5 custom-scrollbar text-white">
+          <section className="md:col-span-3 md:h-full md:overflow-y-auto px-5 py-5 custom-scrollbar text-white">
             <Editor
               selectedFont={font}
               onFontChange={handleFontChange}
@@ -163,7 +164,7 @@ function App() {
           </section>
 
           {/* View */}
-          <section className="col-span-2 h-full overflow-y-auto">
+          <section className="md:col-span-2 md:h-full md:overflow-y-auto px-5 py-5 md:px-0 md:py-0 w-full overflow-x-auto flex justify-center">
             <Paper
               font={font}
               name={name}
