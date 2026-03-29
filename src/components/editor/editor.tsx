@@ -1,6 +1,7 @@
 import EditIcon from "../../assets/icons/edit-icon.svg?react";
 import GlobalButton from "../ui/GlobalButton";
 import GlobalTextInput from "../ui/GlobalTextInput";
+import EducationInput, { type Education } from "./EducationInput";
 
 const fonts = [
   { name: "Sans Serif", class: "font-sans-serif" },
@@ -21,6 +22,14 @@ type EditorProps = {
   onLocationChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   description: string;
   onDescriptionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  educations: Education[];
+  onEducationsChange: (
+    id: string,
+    field: keyof Education,
+    target: string,
+  ) => void;
+  onAddEducation: () => void;
+  onRemoveEducation: (id: string) => void;
 };
 
 function Editor({
@@ -36,6 +45,10 @@ function Editor({
   onLocationChange,
   description,
   onDescriptionChange,
+  educations,
+  onEducationsChange,
+  onAddEducation,
+  onRemoveEducation,
 }: EditorProps) {
   return (
     <>
@@ -99,6 +112,22 @@ function Editor({
             <div className="h-1" />
           </div>
         </EditorSection>
+
+        {/* Education Editor */}
+        <EditorSection title="Education" className="flex flex-col gap-6">
+          {educations.map((education) => {
+            return (
+              <EducationInput
+                education={education}
+                onChange={onEducationsChange}
+                onRemove={onRemoveEducation}
+              />
+            );
+          })}
+          <GlobalButton variant="outline" onClick={onAddEducation}>
+            <p>+ Add Education</p>
+          </GlobalButton>
+        </EditorSection>
       </div>
     </>
   );
@@ -108,9 +137,14 @@ interface EditorSectionProps extends React.AreaHTMLAttributes<HTMLAreaElement> {
   title: string;
 }
 
-function EditorSection({ children, title, ...props }: EditorSectionProps) {
+function EditorSection({
+  children,
+  title,
+  className,
+  ...props
+}: EditorSectionProps) {
   return (
-    <section className="p-5 bg-gray-700 rounded-2xl" {...props}>
+    <section className={`p-5 bg-gray-700 rounded-2xl ${className}`} {...props}>
       <h3 className="mb-4 font-bold text-xl">{title}</h3>
       {children}
     </section>

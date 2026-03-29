@@ -14,6 +14,15 @@ function App() {
   const [description, setDescription] = useState(
     "An aspiring software engineer with a strong passion for building.",
   );
+  const [educations, setEducations] = useState([
+    {
+      id: crypto.randomUUID(),
+      schoolName: "",
+      title: "",
+      startYearOfStudy: "2024",
+      endYearOfStudy: "2025",
+    },
+  ]);
 
   const handleFontChange = (font: string) => {
     setFont(font);
@@ -36,6 +45,39 @@ function App() {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     setDescription((event.target as HTMLInputElement).value);
+  };
+  const handleEducationsChange = (
+    id: string,
+    field: string,
+    target: string,
+  ) => {
+    const newEducations = educations.map((education) => {
+      if (education.id === id) {
+        return {
+          ...education,
+          [field]: target,
+        };
+      }
+      return education;
+    });
+
+    setEducations(newEducations);
+  };
+  const handleAddEducation = () => {
+    setEducations([
+      ...educations,
+      {
+        id: crypto.randomUUID(),
+        schoolName: "",
+        title: "",
+        startYearOfStudy: "2024",
+        endYearOfStudy: "2025",
+      },
+    ]);
+  };
+  const handleRemoveEducation = (id: string) => {
+    const newEducations = educations.filter((education) => education.id !== id);
+    setEducations(newEducations);
   };
 
   return (
@@ -63,11 +105,15 @@ function App() {
               onLocationChange={handleLocationChange}
               description={description}
               onDescriptionChange={handleDescriptionChange}
+              educations={educations}
+              onEducationsChange={handleEducationsChange}
+              onAddEducation={handleAddEducation}
+              onRemoveEducation={handleRemoveEducation}
             />
           </section>
 
           {/* View */}
-          <section className="col-span-2 h-full overflow-y-auto h-fit">
+          <section className="col-span-2 h-full overflow-y-auto">
             <Paper
               font={font}
               name={name}

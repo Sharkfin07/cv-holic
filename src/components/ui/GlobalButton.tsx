@@ -23,7 +23,7 @@ const GlobalButton = ({
   const variantClasses: Record<ButtonVariant, string> = {
     primary: "bg-gray-500 text-white hover:bg-cv-green",
     secondary: "bg-slate-200 text-slate-900 hover:bg-slate",
-    outline: "border border-slate-300 bg-transparent hover:bg-slate-100",
+    outline: "border border-slate-300 bg-transparent hover:bg-cv-green",
     danger: "bg-red-600 text-white hover:bg-red-700",
   };
 
