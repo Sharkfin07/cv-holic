@@ -83,7 +83,7 @@ function App() {
   return (
     <>
       <main className="w-screen h-screen bg-oxford-blue flex flex-col overflow-hidden">
-        <nav className="h-17.5 bg-gray-700 flex items-center justify-start px-6">
+        <nav className="h-17.5 bg-cv-green flex items-center justify-start px-6">
           <Logo
             height={48}
             className="hover:opacity-60 transition duration-200 ease-in-out"
@@ -121,6 +121,7 @@ function App() {
               phoneNumber={phoneNumber}
               location={location}
               description={description}
+              educations={educations}
             />
           </section>
         </div>
