@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+# CV-Holic
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dynamic, real-time CV / Resume Builder built with ReactJS. This project is a part of **The Odin Project** curriculum (CV Application). I mainly made this project as a refresher to front-end development (to be frank, i have forgotten many things after venturing to mobile development with Flutter).
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Real-Time Preview**: See your CV update instantly on the right panel as you type on the left.
+- **Dynamic Sections**: Easily add, edit, and remove multiple entries for your Education and Work Experience.
+- **Customizable Typography**: Switch between elegant fonts (Sans Serif, Serif, Monospace) to match your professional style.
+- **Fully Responsive**: Optimized for both Desktop (split-pane view) and Mobile (stacked column view) to edit your CV anywhere.
+- **Reusable UI Components**: Built with a sleek, modular UI approach using Tailwind CSS.
 
-## React Compiler
+## Built With
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React 19 (Hooks, Functional Components)
+- **Tooling**: Vite (Lightning fast dev server)
+- **Language**: TypeScript (Strict type safety)
+- **Styling**: Tailwind CSS v4
+- **Icons**: Custom SVGs configured with `vite-plugin-svgr`
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+To get a local copy up and running, follow these simple steps:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Make sure you have Node.js and npm installed on your machine.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clone the repository
+   ```sh
+   git clone https://github.com/your-username/cv-holic.git
+   ```
+2. Navigate to the project directory
+   ```sh
+   cd cv-holic
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Start the development server
+   ```sh
+   npm run dev
+   ```
+5. Open your browser and visit `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ��� Project Structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `src/components/editor/`: Contains the form inputs, dynamic dynamic sections (Education, Experience), and font selectors.
+- `src/components/paper/`: The visual representation/preview of the CV.
+- `src/components/ui/`: Reusable, generic UI base components (Buttons, Text Inputs).
+- `src/styles/`: Global stylesheets and Tailwind configurations.
+
+## ��� Acknowledgments
+
+- Designed and built for [The Odin Project](https://www.theodinproject.com/).
