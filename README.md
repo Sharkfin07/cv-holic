@@ -1,5 +1,7 @@
 # CV-Holic
 
+<img width="480" height="689" alt="hero@2x" src="https://github.com/user-attachments/assets/96c2576e-ef62-4ee7-a2c1-22140542a810" />
+<br /><br />
 A dynamic, real-time CV / Resume Builder built with ReactJS. This project is a part of **The Odin Project** curriculum (CV Application). I mainly made this project as a refresher to front-end development (to be frank, i have forgotten many things after venturing to mobile development with Flutter).
 
 ## Features
@@ -46,13 +48,13 @@ Make sure you have Node.js and npm installed on your machine.
    ```
 5. Open your browser and visit `http://localhost:5173`
 
-## ��� Project Structure
+## Project Structure
 
 - `src/components/editor/`: Contains the form inputs, dynamic dynamic sections (Education, Experience), and font selectors.
 - `src/components/paper/`: The visual representation/preview of the CV.
 - `src/components/ui/`: Reusable, generic UI base components (Buttons, Text Inputs).
 - `src/styles/`: Global stylesheets and Tailwind configurations.
 
-## ��� Acknowledgments
+## Acknowledgments
 
 - Designed and built for [The Odin Project](https://www.theodinproject.com/).
